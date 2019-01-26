@@ -1,3 +1,12 @@
 <html>
-  <%= @player_1_name %> vs. <%= @player_2_name %>
+  <%= @player_1_name %> vs. <%= @player_2_name %> </br>
+
+  <%= @player_1_name %>: <%= @player_1_score %>HP </br>
+  <%= @player_2_name %>: <%= @player_2_score%>HP </br></br>
+
+  <%= @confirmation %>
+
+  <form action = '/attack'>
+    <button> Attack </button>
+  </form>
 </html>
