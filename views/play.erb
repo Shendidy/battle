@@ -1,10 +1,16 @@
 <html>
-  <%= @game.player_1.name %> vs. <%= @game.player_2.name %> </br>
+  <%= @game.player_1.name %> vs. <%= @game.player_2.name %> </br></br>
 
   <%= @game.player_1.name %>: <%= @game.player_1.hit_points %>HP </br>
   <%= @game.player_2.name %>: <%= @game.player_2.hit_points %>HP </br></br>
 
-  <%= @game.player_1.name + " attacked " + @game.player_2.name %>
+  <% if @game.current_player.hit_points != Player::DEFAULT_HIT_POINTS %>
+
+  <%= @game.waiting_player.name + " attacked " + @game.current_player.name %></br></br>
+
+  <% end %>
+
+  Current player: <%= @game.current_player.name %>
 
   <form action = '/attack'>
     <button> Attack </button>
