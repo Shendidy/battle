@@ -4,15 +4,32 @@
   <%= @game.player_1.name %>: <%= @game.player_1.hit_points %>HP </br>
   <%= @game.player_2.name %>: <%= @game.player_2.hit_points %>HP </br></br>
 
-  <% if @game.current_player.hit_points != Player::DEFAULT_HIT_POINTS %>
+  <% if @game.current_player.hit_points == 0 %>
 
-  <%= @game.waiting_player.name + " attacked " + @game.current_player.name %></br></br>
+    <%= @game.current_player.name + " lost the game. Start a new one? " %></br></br>
+
+    <form action = '/'>
+      <button> New game? </button>
+    </form>
+
+  <% elsif @game.current_player.hit_points != Player::DEFAULT_HIT_POINTS %>
+
+    <%= @game.waiting_player.name + " attacked " + @game.current_player.name %></br></br>
+
+    Current player: <%= @game.current_player.name %>
+
+    <form action = '/attack'>
+      <button> Attack </button>
+    </form>
+
+  <% else %>
+
+    Current player: <%= @game.current_player.name %>
+
+    <form action = '/attack'>
+      <button> Attack </button>
+    </form>
 
   <% end %>
 
-  Current player: <%= @game.current_player.name %>
-
-  <form action = '/attack'>
-    <button> Attack </button>
-  </form>
 </html>
