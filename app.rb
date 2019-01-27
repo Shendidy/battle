@@ -1,9 +1,10 @@
 require 'sinatra'
 require_relative './lib/player'
 require_relative './lib/game'
+require_relative './lib/attack'
 
 class Battle < Sinatra::Base
-  enable :sessions
+  # enable :sessions
 
   get '/' do
     erb :index
@@ -25,8 +26,8 @@ class Battle < Sinatra::Base
 
   get '/attack' do
     @game = $game
-
-    @game.attack(@game.waiting_player)
+    Attack.new.attack(@game.waiting_player)
+    @game.switch_turns
 
     erb :play
   end

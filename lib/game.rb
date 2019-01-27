@@ -22,11 +22,6 @@ class Game
     @players.last
   end
 
-  def attack(player)
-    player.receive_damage
-    switch_turns
-  end
-
   def switch_turns
     temp = @current_player
     @current_player = @waiting_player
