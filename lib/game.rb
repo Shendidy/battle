@@ -27,4 +27,12 @@ class Game
     @current_player = @waiting_player
     @waiting_player = temp
   end
+
+  def self.create(player_1, player_2)
+    @game = Game.new(player_1, player_2)
+  end
+
+  def self.instance
+    @game
+  end
 end
